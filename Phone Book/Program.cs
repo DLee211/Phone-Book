@@ -2,4 +2,7 @@
 
 using Phone_Book;
 
+var context = new ContactContext();
+
+
 UserInterface.MainMenu();
