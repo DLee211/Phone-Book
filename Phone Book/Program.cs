@@ -5,6 +5,4 @@ using Phone_Book;
 var context = new ContactContext();
 context.Database.EnsureDeleted();
 context.Database.EnsureCreated();
-
-
 UserInterface.MainMenu();

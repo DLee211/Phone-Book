@@ -24,6 +24,7 @@ public static class UserInterface
             switch (option)
             {
                 case Enums.MainMenuOptions.AddContacts:
+                    ContactService.InsertContact();
                     break;
                 
                 case Enums.MainMenuOptions.ViewContacts:
