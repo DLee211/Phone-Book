@@ -3,7 +3,7 @@ using Phone_Book.Models;
 
 namespace Phone_Book;
 
-public class ContactContext
+public class ContactContext : DbContext
 {
     public DbSet<Contact> Contacts { get; set; }
     
