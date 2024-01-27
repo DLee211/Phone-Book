@@ -14,4 +14,10 @@ public class ContactService
         contact.PhoneNumber = AnsiConsole.Ask<string>("Contact PhoneNumber:");
         ContactController.AddContact(contact);
     }
+
+    public static void ViewContact()
+    {
+        var contacts = ContactController.GetContacts();
+        UserInterface.ShowContactsTable(contacts);
+    }
 }

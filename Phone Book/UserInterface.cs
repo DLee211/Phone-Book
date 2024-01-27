@@ -1,4 +1,5 @@
-﻿using Spectre.Console;
+﻿using Phone_Book.Models;
+using Spectre.Console;
 
 namespace Phone_Book;
 
@@ -28,6 +29,7 @@ public static class UserInterface
                     break;
                 
                 case Enums.MainMenuOptions.ViewContacts:
+                    ContactService.ViewContact();
                     break;
                 
                 case Enums.MainMenuOptions.SearchContacts:
@@ -45,5 +47,30 @@ public static class UserInterface
                     break;
             }
         }
+    }
+
+    public static void ShowContactsTable(List<Contact> contacts)
+    {
+        var table = new Table();
+
+        table.AddColumn("Id");
+        table.AddColumn("Name");
+        table.AddColumn("Email");
+        table.AddColumn("PhoneNumber");
+        
+        foreach (var contact in contacts)
+        {
+            table.AddRow(
+                contact.Id.ToString(),
+                contact.Name,
+                contact.Email,
+                contact.PhoneNumber
+            );
+        }
+        
+        AnsiConsole.Write(table);
+        
+        Console.WriteLine("Enter any key to continue:");
+        Console.ReadLine();
     }
 }
