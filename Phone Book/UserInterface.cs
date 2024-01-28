@@ -39,6 +39,9 @@ public static class UserInterface
                     break;
                 
                 case Enums.MainMenuOptions.DeleteContacts:
+                    var contacts = ContactController.GetContacts();
+                    ShowContactsTable(contacts);
+                    ContactService.RemoveContact();
                     break;
                 
                 case Enums.MainMenuOptions.Quit:
@@ -69,8 +72,5 @@ public static class UserInterface
         }
         
         AnsiConsole.Write(table);
-        
-        Console.WriteLine("Enter any key to continue:");
-        Console.ReadLine();
     }
 }

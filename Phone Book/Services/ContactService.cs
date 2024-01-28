@@ -19,5 +19,15 @@ public class ContactService
     {
         var contacts = ContactController.GetContacts();
         UserInterface.ShowContactsTable(contacts);
+        
+        Console.WriteLine("Enter any key to continue:");
+        Console.ReadLine();
+    }
+
+    public static void RemoveContact()
+    {
+        var contact = new Contact();
+        contact.Id = AnsiConsole.Ask<int>("Which Id do you want to delete?");
+        ContactController.DeleteContact(contact);
     }
 }

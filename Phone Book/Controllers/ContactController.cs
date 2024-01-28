@@ -15,9 +15,14 @@ public class ContactController
     public static List<Contact> GetContacts()
     {
         using var db = new ContactContext();
-
         var contacts = db.Contacts.ToList();
-
         return contacts;
+    }
+
+    public static void DeleteContact(Contact contact)
+    {
+        using var db = new ContactContext();
+        db.Remove(contact);
+        db.SaveChanges();
     }
 }
