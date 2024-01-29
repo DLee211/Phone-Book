@@ -25,4 +25,11 @@ public class ContactController
         db.Remove(contact);
         db.SaveChanges();
     }
+
+    public static void UpdateContact(Contact contact)
+    {
+        using var db = new ContactContext();
+        db.Update(contact);
+        db.SaveChanges();
+    }
 }

@@ -22,6 +22,7 @@ public static class UserInterface
                         Enums.MainMenuOptions.Quit
                     ));
 
+            List<Contact>? contacts;
             switch (option)
             {
                 case Enums.MainMenuOptions.AddContacts:
@@ -36,10 +37,13 @@ public static class UserInterface
                     break;
                 
                 case Enums.MainMenuOptions.UpdateContacts:
+                    contacts = ContactController.GetContacts();
+                    ShowContactsTable(contacts);
+                    ContactService.UpdateContacts();
                     break;
                 
                 case Enums.MainMenuOptions.DeleteContacts:
-                    var contacts = ContactController.GetContacts();
+                    contacts = ContactController.GetContacts();
                     ShowContactsTable(contacts);
                     ContactService.RemoveContact();
                     break;

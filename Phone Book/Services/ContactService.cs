@@ -30,4 +30,39 @@ public class ContactService
         contact.Id = AnsiConsole.Ask<int>("Which Id do you want to delete?");
         ContactController.DeleteContact(contact);
     }
+
+    public static void UpdateContacts()
+    {
+        var contact = GetContactInput();
+        
+        contact.Name = AnsiConsole.Confirm("Update name?")
+            ? AnsiConsole.Ask<string>("Contact's new name:")
+            : contact.Name;
+        
+        contact.Email = AnsiConsole.Confirm("Update email?")
+            ? AnsiConsole.Ask<string>("Contact's new email:")
+            : contact.Email;
+        
+        contact.PhoneNumber = AnsiConsole.Confirm("Update phone number?")
+            ? AnsiConsole.Ask<string>("Contact's new phone number:")
+            : contact.PhoneNumber;
+
+        ContactController.UpdateContact(contact);
+
+    }
+
+    private static Contact GetContactInput()
+    {
+        var contacts = ContactController.GetContacts();
+
+        var contactsArray = contacts.Select(x => x.Id);
+        
+        var option = AnsiConsole.Prompt(new SelectionPrompt<int>()
+            .Title("Choose Product")
+            .AddChoices(contactsArray));
+        
+        var contact = contacts.Single(x => x.Id == option);
+
+        return contact;
+    }
 }
