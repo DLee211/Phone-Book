@@ -1,7 +1,7 @@
 # Phone Book Application using Entity Framework
 
 ## Introduction
-Welcome to the Phone Book Application tutorial using Entity Framework in the .NET ecosystem. This tutorial aims to help you understand the basics of Entity Framework, the popular Object-Relational Mapper (ORM) in C#. The project involves creating a simple Phone Book application where users can perform operations such as Add, Delete, Update, and Read contacts with their phone numbers.
+Welcome to the Phone Book Application using Entity Framework in the .NET ecosystem. This projects uses the basics of Entity Framework. The project involves creating a simple Phone Book application where users can perform operations such as Add, Delete, Update, and Read contacts with their phone numbers.
 
 ## Project Overview
 This project implements a console-based application to interact with a database using Entity Framework. The main functionalities include:
