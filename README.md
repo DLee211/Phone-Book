@@ -35,5 +35,4 @@ To run this application, make sure you have the following:
 - SQL Server for database storage
 
 ## Notes
-- This tutorial emphasizes the usage of Entity Framework for database operations, but it's recommended to have a fundamental understanding of raw SQL.
 - The application uses a Code-First Approach, allowing Entity Framework to create the database schema based on the defined classes.
