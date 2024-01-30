@@ -11,7 +11,9 @@ public class ContactService
 
         contact.Name = AnsiConsole.Ask<string>("Contact Name:");
         contact.Email = AnsiConsole.Ask<string>("Contact Email:");
+        Validation.ValidateEmail(contact);
         contact.PhoneNumber = AnsiConsole.Ask<string>("Contact PhoneNumber:");
+        Validation.ValidatePhoneNumber(contact);
         ContactController.AddContact(contact);
     }
 
@@ -38,14 +40,34 @@ public class ContactService
         contact.Name = AnsiConsole.Confirm("Update name?")
             ? AnsiConsole.Ask<string>("Contact's new name:")
             : contact.Name;
+
+        if (AnsiConsole.Confirm("Update email?"))
+        {
+            string newEmail;
+            do
+            {
+                newEmail = AnsiConsole.Ask<string>("Contact's new email:");
+                if (!Validation.IsValidEmail(newEmail))
+                {
+                    AnsiConsole.MarkupLine("[red]Invalid email format. Please enter a valid email address.[/]");
+                }
+            } while (!Validation.IsValidEmail(newEmail));
+            contact.Email = newEmail;
+        }
         
-        contact.Email = AnsiConsole.Confirm("Update email?")
-            ? AnsiConsole.Ask<string>("Contact's new email:")
-            : contact.Email;
-        
-        contact.PhoneNumber = AnsiConsole.Confirm("Update phone number?")
-            ? AnsiConsole.Ask<string>("Contact's new phone number:")
-            : contact.PhoneNumber;
+        if (AnsiConsole.Confirm("Update phone number?"))
+        {
+            string newPhoneNumber;
+            do
+            {
+                newPhoneNumber = AnsiConsole.Ask<string>("Contact's new phone number:");
+                if (!Validation.IsValidPhoneNumber(newPhoneNumber))
+                {
+                    AnsiConsole.MarkupLine("[red]Invalid phone number format. Please enter a valid phone number.[/]");
+                }
+            } while (!Validation.IsValidPhoneNumber(newPhoneNumber));
+            contact.PhoneNumber = newPhoneNumber;
+        }
 
         ContactController.UpdateContact(contact);
 
