@@ -65,4 +65,67 @@ public class ContactService
 
         return contact;
     }
+
+    public static void GetName()
+    {
+        var contact = GetContactNameInput();
+        UserInterface.ShowContact(contact);
+    }
+
+    private static Contact GetContactNameInput()
+    {
+        var contacts = ContactController.GetContacts();
+
+        var contactsArray = contacts.Select(x => x.Name);
+        
+        var option = AnsiConsole.Prompt(new SelectionPrompt<string>()
+            .Title("Choose Name")
+            .AddChoices(contactsArray));
+        
+        var contact = contacts.Single(x => x.Name == option);
+
+        return contact;
+    }
+
+    public static void GetEmail()
+    {
+        var contact = GetContactEmailInput();
+        UserInterface.ShowContact(contact);
+    }
+
+    private static Contact GetContactEmailInput()
+    {
+        var contacts = ContactController.GetContacts();
+
+        var contactsArray = contacts.Select(x => x.Email);
+        
+        var option = AnsiConsole.Prompt(new SelectionPrompt<string>()
+            .Title("Choose Email")
+            .AddChoices(contactsArray));
+        
+        var contact = contacts.Single(x => x.Email == option);
+
+        return contact;
+    }
+
+    public static void GetPhoneNumber()
+    {
+        var contact = GetContactPhoneNumberInput();
+        UserInterface.ShowContact(contact);
+    }
+
+    private static Contact GetContactPhoneNumberInput()
+    {
+        var contacts = ContactController.GetContacts();
+
+        var contactsArray = contacts.Select(x => x.PhoneNumber);
+        
+        var option = AnsiConsole.Prompt(new SelectionPrompt<string>()
+            .Title("Choose PhoneNumber")
+            .AddChoices(contactsArray));
+        
+        var contact = contacts.Single(x => x.PhoneNumber == option);
+
+        return contact;
+    }
 }

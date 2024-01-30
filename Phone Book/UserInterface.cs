@@ -34,6 +34,7 @@ public static class UserInterface
                     break;
                 
                 case Enums.MainMenuOptions.SearchContacts:
+                    SearchMenu();
                     break;
                 
                 case Enums.MainMenuOptions.UpdateContacts:
@@ -51,6 +52,42 @@ public static class UserInterface
                 case Enums.MainMenuOptions.Quit:
                     Console.WriteLine("Goodbye!");
                     isAppRunning = false;
+                    break;
+            }
+        }
+    }
+
+    static internal void SearchMenu()
+    {
+        var isSearchMenuRunning = true;
+        while (isSearchMenuRunning)
+        {
+            var option = AnsiConsole.Prompt(
+                new SelectionPrompt<Enums.ContactMenuOptions>()
+                    .Title("Contact Search Menu")
+                    .AddChoices(
+                        Enums.ContactMenuOptions.SearchContactName,
+                        Enums.ContactMenuOptions.SearchContactEmail,
+                        Enums.ContactMenuOptions.SearchContactPhoneNumber,
+                        Enums.ContactMenuOptions.Quit
+                    ));
+            
+            switch (option)
+            {
+                case Enums.ContactMenuOptions.SearchContactName:
+                    ContactService.GetName();
+                    break;
+                
+                case Enums.ContactMenuOptions.SearchContactEmail:
+                    ContactService.GetEmail();
+                    break;
+                
+                case Enums.ContactMenuOptions.SearchContactPhoneNumber:
+                    ContactService.GetPhoneNumber();
+                    break;
+                
+                case Enums.ContactMenuOptions.Quit:
+                    isSearchMenuRunning = false;
                     break;
             }
         }
@@ -76,5 +113,17 @@ public static class UserInterface
         }
         
         AnsiConsole.Write(table);
+    }
+
+    public static void ShowContact(Contact contact)
+    {
+        var panel = new Panel($@"Name:{contact.Name} Email:{contact.Email} Phone Number:{contact.PhoneNumber}");
+        panel.Header = new PanelHeader($"{contact.Name}");
+        panel.Padding = new Padding(2, 2, 2, 2);
+        
+        AnsiConsole.Write(panel);
+        
+        Console.WriteLine("Enter any key to continue");
+        Console.ReadLine();
     }
 }

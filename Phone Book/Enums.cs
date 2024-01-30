@@ -11,4 +11,12 @@ public class Enums
         DeleteContacts,
         Quit
     }
+    
+    internal enum ContactMenuOptions
+    {
+        SearchContactName,
+        SearchContactEmail,
+        SearchContactPhoneNumber,
+        Quit
+    }
 }
