@@ -9,7 +9,7 @@ public class ContactContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer( "Server=(localdb)\\MSSQLLocalDB;Database=contacts.db;Integrated Security=True");
+        optionsBuilder.UseSqlServer( "");
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
