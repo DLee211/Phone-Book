@@ -26,7 +26,7 @@ To run this application, make sure you have the following:
 ## Getting Started
 1. Clone or download the repository to your local machine.
 2. Open the project in your preferred C# development environment (Visual Studio, VS Code, etc.).
-3. Configure the connection string in the `appsettings.json` file to point to your SQL Server instance.
+3. Configure the connection string to point to your SQL Server instance.
 4. Run the application and follow the console prompts to perform various operations on the Phone Book.
 
 ## Technologies Used
